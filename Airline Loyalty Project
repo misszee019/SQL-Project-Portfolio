@@ -1,0 +1,95 @@
+Airline Loyalty Program SQL Analysis Project
+"C:\Users\rahma\Downloads\airline image.jpg"
+📌 Project Title
+
+Airline Loyalty Program Data Analysis using SQL
+
+"C:\Users\rahma\Downloads\ADISA ZAINAB AIRLINE LOYALTY SQL PROJECT.sql"
+
+📖 Project Overview
+
+This project analyzes an airline loyalty program dataset to understand customer behavior, flight patterns, and reward usage. The goal is to extract meaningful insights using SQL queries and help the business improve customer retention and loyalty engagement.
+
+📂 Dataset Description
+
+The dataset contains approximately 39,000 records and includes two main tables:
+
+1. Customers Table
+Customer ID
+Name
+Gender
+Country
+Enrollment Date
+Loyalty Tier
+2. Flights / Transactions Table
+Flight ID
+Customer ID
+Flight Date
+Distance Traveled
+Points Earned
+Points Redeemed
+🎯 Objectives of the Analysis
+
+The analysis aims to answer the following questions:
+
+Who are the most active loyalty members?
+Which customers earn the most points?
+What is the average distance traveled per customer?
+Which loyalty tier is the most active?
+How many points are redeemed vs earned?
+What trends exist in customer flight frequency?
+
+🛠 Tools Used
+- MySQL / SQL Workbench
+- SQL (Joins, Aggregations, Group By, Subqueries)
+
+Data Cleaning techniques
+🧠 Key SQL Concepts Used
+SELECT statements
+INNER JOIN
+GROUP BY
+ORDER BY
+COUNT, SUM, AVG functions
+CASE statements
+Subqueries
+
+💻 Sample SQL Queries
+1. Total Points Earned by Each Customer
+SELECT 
+    customer_id,
+    SUM(points_earned) AS total_points
+FROM flights
+GROUP BY customer_id
+ORDER BY total_points DESC;
+2. Most Active Customers (by flights taken)
+SELECT 
+    customer_id,
+    COUNT(flight_id) AS total_flights
+FROM flights
+GROUP BY customer_id
+ORDER BY total_flights DESC;
+3. Average Distance Traveled per Customer
+SELECT 
+    customer_id,
+    AVG(distance) AS avg_distance
+FROM flights
+GROUP BY customer_id;
+4. Loyalty Tier Performance
+SELECT 
+    c.loyalty_tier,
+    COUNT(f.flight_id) AS total_flights,
+    SUM(f.points_earned) AS total_points
+FROM customers c
+JOIN flights f
+ON c.customer_id = f.customer_id
+GROUP BY c.loyalty_tier
+ORDER BY total_points DESC;
+📊 Key Insights (Example Section)
+High-tier loyalty members contribute the most points but are fewer in number
+A small group of customers accounts for most flight activity
+Points redemption is significantly lower than points earned
+Customer activity is uneven across loyalty tiers
+
+📌 Conclusion
+
+This analysis provides insights into customer engagement within the airline loyalty program. The findings can help the airline improve reward structures, increase customer retention, and design better loyalty incentives.
